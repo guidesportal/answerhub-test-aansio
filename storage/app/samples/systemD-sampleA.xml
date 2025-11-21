@@ -1,0 +1,8 @@
+<surveyResponse>
+    <id>abc-123</id>
+    <survey>satisfaction</survey>
+    <question>satisfaction</question>
+    <participant>jperez@shub.com</participant>
+    <score>2</score>
+    <date>2025-08-17 12:04:00</date>
+</surveyResponse>

@@ -1,0 +1,13 @@
+{
+    "survey_code": "satisfaction",
+    "external_qid": "1",
+    "participant": {
+        "first": "Juan",
+        "last": "Pérez",
+        "email": "jperez@shub.com"
+    },
+    "rating": {
+        "value": 5
+    },
+    "created_at": 1692270000
+}

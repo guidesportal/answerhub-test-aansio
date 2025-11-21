@@ -1,0 +1,7 @@
+FROM mariadb:lts-ubi
+LABEL authors="francescble"
+ENV MARIADB_RANDOM_ROOT_PASSWORD=1
+ENV MYSQL_DATABASE=answer_hub_db
+ENV MYSQL_USER=answer
+ENV MYSQL_PASSWORD=hub
+
