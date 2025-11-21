@@ -1,0 +1,13 @@
+
+bootstrap/cache/*.php
+
+vendor/
+
+node_modules/
+
+.git
+.gitignore
+
+# Ignore Docker files outside this context
+docker-compose.yml
+.dockerignore
