@@ -10,7 +10,7 @@ class EloquentSurveyRepository implements SurveyRepositoryInterface
 {
     public function find(string $title): ?Survey
     {
-        return Survey::find($title);
+        return Survey::where('title', $title)->first();
     }
 
     public function list(?array $with = []): Collection

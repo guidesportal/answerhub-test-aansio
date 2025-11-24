@@ -8,7 +8,7 @@ interface SurveyAnswerServiceInterface
      * Process survey answers.
      *
      * @param string $email User email
-     * @param string $surveyId Survey ID
+     * @param string $surveyId Survey title/identifier (not numeric ID)
      * @param array $answers Array of answers with format [['question_id' => int, 'answer' => string, 'answered_at' => DateTimeInterface]]
      * @return bool
      */

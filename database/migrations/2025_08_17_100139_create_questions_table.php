@@ -9,12 +9,10 @@ return new class () extends Migration {
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('survey');
+            $table->foreignId('survey_id')->constrained('surveys')->onDelete('cascade');
             $table->text('question_text');
             $table->enum('type', ['text', 'multiple_choice', 'number'])->default('text');
             $table->timestamps();
-
-            $table->foreign('survey')->references('title')->on('surveys')->onDelete('cascade');
         });
     }
 

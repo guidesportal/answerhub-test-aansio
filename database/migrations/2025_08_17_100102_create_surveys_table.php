@@ -8,7 +8,8 @@ return new class () extends Migration {
     public function up(): void
     {
         Schema::create('surveys', function (Blueprint $table) {
-            $table->string('title')->primary();
+            $table->id();
+            $table->string('title');
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();

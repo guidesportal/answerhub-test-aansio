@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Symfony\Component\Uid\Factory\UlidFactory;
 
 /**
  * @method static find(int $id)
@@ -12,17 +11,8 @@ use Symfony\Component\Uid\Factory\UlidFactory;
  */
 class Survey extends Model
 {
-    protected $primaryKey = 'title';
-    public $keyType = 'string';
-    public $incrementing = false;
-
-    public function getKeyForSaveQuery()
-    {
-        $uf = new UlidFactory();
-        return $uf->create()->toRfc4122();
-    }
-
     protected $fillable = [
+        'title',
         'description',
         'is_active',
     ];
@@ -33,6 +23,6 @@ class Survey extends Model
 
     public function questions(): HasMany
     {
-        return $this->hasMany(Question::class, 'survey', 'title');
+        return $this->hasMany(Question::class);
     }
 }

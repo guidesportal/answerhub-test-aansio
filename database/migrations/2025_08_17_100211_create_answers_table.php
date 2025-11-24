@@ -12,17 +12,12 @@ return new class () extends Migration {
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id(); // Primary key
-            $table->string('survey'); // Reference to the survey
-            $table->unsignedBigInteger('question_id'); // Reference to the question
-            $table->unsignedBigInteger('user_id')->nullable(); // Optional: user who answered
+            $table->foreignId('survey_id')->constrained('surveys')->onDelete('cascade');
+            $table->foreignId('question_id')->constrained('questions')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->text('answer'); // The actual answer
             $table->dateTime('answered_at')->nullable();
             $table->timestamps(); // created_at + updated_at
-
-            // Foreign keys
-            $table->foreign('survey')->references('title')->on('surveys')->onDelete('cascade');
-            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
         });
     }
 

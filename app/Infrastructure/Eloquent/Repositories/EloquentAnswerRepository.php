@@ -18,21 +18,21 @@ class EloquentAnswerRepository implements AnswerRepositoryInterface
         return collect(Answer::with($with)->get());
     }
 
-    public function findBySurveyAndQuestionId(string $survey, int $questionId): Collection
+    public function findBySurveyAndQuestionId(int $surveyId, int $questionId): Collection
     {
         $eloquentCollection = Answer::query()
-            ->where('survey', $survey)
+            ->where('survey_id', $surveyId)
             ->where('question_id', $questionId)
             ->get();
 
         return collect($eloquentCollection);
     }
 
-    public function firstBySurveyAndQuestionId(string $survey, int $questionId): ?Answer
+    public function firstBySurveyAndQuestionId(int $surveyId, int $questionId): ?Answer
     {
         return Answer::query()
             ->where('question_id', '=', $questionId)
-            ->where('survey', '=', $survey)
+            ->where('survey_id', '=', $surveyId)
             ->first();
     }
 
@@ -40,7 +40,7 @@ class EloquentAnswerRepository implements AnswerRepositoryInterface
     {
         $answer = new Answer();
         $answer->user_id = $answerData['user_id'];
-        $answer->survey = $answerData['survey'];
+        $answer->survey_id = $answerData['survey_id'];
         $answer->question_id = $answerData['question_id'];
         $answer->answer = $answerData['answer'];
         $answer->answered_at = $answerData['answered_at'];

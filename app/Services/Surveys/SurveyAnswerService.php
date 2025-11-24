@@ -9,7 +9,7 @@ use App\Repositories\AnswerRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class SurveyAnswerService
+class SurveyAnswerService implements SurveyAnswerServiceInterface
 {
     public function __construct(
         private readonly UserRepositoryInterface     $userRepo,
@@ -24,7 +24,7 @@ class SurveyAnswerService
      * Process survey answers.
      *
      * @param string $email User email
-     * @param string $surveyId Survey ID
+     * @param string $surveyId Survey title/identifier (not numeric ID)
      * @param array $answers Array of answers with format [['question_id' => int, 'answer' => string, 'answered_at' => DateTimeInterface]]
      * @return bool
      */
@@ -34,14 +34,14 @@ class SurveyAnswerService
     }
 
     /**
-     * Save survey answers.
+     * Save survey answers to database.
      *
-     * @param string $email
-     * @param int $surveyId
-     * @param array $answers [['question_id' => int, 'answer' => string]]
+     * @param string $email User email
+     * @param string $surveyId Survey title/identifier (not numeric ID)
+     * @param array $answers Array of answers with format [['question_id' => int, 'answer' => string, 'answered_at' => DateTimeInterface]]
      * @return bool
      */
-    private function realPerform(string $email, int $surveyId, array $answers): bool
+    private function realPerform(string $email, string $surveyId, array $answers): bool
     {
         return DB::transaction(function () use ($email, $surveyId, $answers) {
 
@@ -58,7 +58,7 @@ class SurveyAnswerService
             }
 
             foreach ($answers as $answerData) {
-                $question = $this->questionRepo->firstBySurveyIdAndQuestionId($surveyId, $answerData['question_id']);
+                $question = $this->questionRepo->firstBySurveyAndQuestionId($survey->id, $answerData['question_id']);
 
                 if (!$question) {
                     Log::warning("Question {$answerData['question_id']} not found in survey {$surveyId}");
@@ -67,9 +67,10 @@ class SurveyAnswerService
 
                 $this->answerRepo->create([
                     'user_id' => $user->id,
-                    'survey_id' => $surveyId,
+                    'survey_id' => $survey->id,
                     'question_id' => $question->id,
                     'answer' => $answerData['answer'],
+                    'answered_at' => $answerData['answered_at'] ?? now(),
                 ]);
             }
 

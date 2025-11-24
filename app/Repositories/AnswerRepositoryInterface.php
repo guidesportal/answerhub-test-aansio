@@ -14,14 +14,14 @@ interface AnswerRepositoryInterface
      */
     public function list(?array $with = []): Collection;
 
-    public function firstBySurveyAndQuestionId(string $survey, int $questionId): ?Answer;
+    public function firstBySurveyAndQuestionId(int $surveyId, int $questionId): ?Answer;
 
     /**
-     * @param string $survey
+     * @param int $surveyId
      * @param int $questionId
      * @return Collection<Answer>
      */
-    public function findBySurveyAndQuestionId(string $survey, int $questionId): Collection;
+    public function findBySurveyAndQuestionId(int $surveyId, int $questionId): Collection;
 
     public function create(array $answerData): ?Answer;
 }
