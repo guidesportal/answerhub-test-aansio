@@ -20,17 +20,17 @@ class SurveyAnswerService
     {
     }
 
-    /*
-    * Here we can expect a bunch of arguments, or a typed object or simply stdClass obj... Whatever
-    * Depending on how do you implement the code flow between SurveyAnswerController and this service method
-    * It's up to you to directly call this perform() method directly from the controller
-    * or from a job, or any other flow but this is the only method you are allowed to edit on this file
-    */
-    public function perform(): void
+    /**
+     * Process survey answers.
+     *
+     * @param string $email User email
+     * @param string $surveyId Survey ID
+     * @param array $answers Array of answers with format [['question_id' => int, 'answer' => string, 'answered_at' => DateTimeInterface]]
+     * @return bool
+     */
+    public function perform(string $email, string $surveyId, array $answers): bool
     {
-        // TODO implement your code in a way that finally you can call the realPerform() method
-        // Sample, the final line of that method will be like:
-        // $this->realPerform($userId, $surveyId, $answers);
+        return $this->realPerform($email, $surveyId, $answers);
     }
 
     /**
