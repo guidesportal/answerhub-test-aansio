@@ -1,0 +1,9 @@
+{
+    "response_id": 101,
+    "survey": "satisfaction",
+    "qid": "1",
+    "user_name": "Juan Pérez",
+    "email": "jperez@shub.com",
+    "score": 4,
+    "submitted_at": "2025-08-17T12:01:00Z"
+}

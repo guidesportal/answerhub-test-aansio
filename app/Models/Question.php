@@ -19,7 +19,7 @@ class Question extends Model
 
     public function survey(): BelongsTo
     {
-        return $this->belongsTo(Survey::class);
+        return $this->belongsTo(Survey::class, 'title', 'survey');
     }
 
     public function answers(): HasMany

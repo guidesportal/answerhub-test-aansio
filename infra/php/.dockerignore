@@ -2,7 +2,7 @@
 bootstrap/cache/*.php
 
 vendor/
-
+infra/
 node_modules/
 
 .git

@@ -10,7 +10,7 @@ readonly class QuestionController
     use ReadableResource;
     public function __construct(
         private QuestionRepositoryInterface $repository,
-    ){
+    ) {
 
     }
 }

@@ -1,0 +1,11 @@
+{
+    "id": "res_999",
+    "survey": {
+        "surveyId": "satisfaction",
+        "questionId": "1"
+    },
+    "email_recipient": "jperez",
+    "email_host": "shub.com",
+    "answer": "3",
+    "submitted": "17/08/2025 12:03"
+}

@@ -18,9 +18,9 @@ class EloquentUserRepository implements UserRepositoryInterface
         return User::query()->where('email', $email)->first();
     }
 
-    public function list(): Collection
+    public function list(?array $with = []): Collection
     {
-        return collect(User::all());
+        return collect(User::with($with)->get());
     }
 
 }

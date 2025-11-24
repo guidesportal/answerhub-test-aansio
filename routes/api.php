@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('survey-responses')->group(function () {
+Route::prefix('external/survey-responses')->group(function () {
 
     Route::post('/system-a', [SurveyAnswerController::class, 'systemA']);
 
@@ -32,9 +32,7 @@ Route::prefix('survey-responses')->group(function () {
 
 });
 
-/**
- * Rutas CRUD para lectura
- */
+
 Route::apiResource('users', UserController::class);
 Route::apiResource('surveys', SurveyController::class);
 Route::apiResource('questions', QuestionController::class);

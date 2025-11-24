@@ -12,16 +12,16 @@ interface AnswerRepositoryInterface
     /**
      * @return Collection<Answer>
      */
-    public function list(): Collection;
+    public function list(?array $with = []): Collection;
 
-    public function firstBySurveyIdAndQuestionId(int $surveyId, int $questionId): ?Answer;
+    public function firstBySurveyAndQuestionId(string $survey, int $questionId): ?Answer;
 
     /**
-     * @param int $surveyId
+     * @param string $survey
      * @param int $questionId
      * @return Collection<Answer>
      */
-    public function findBySurveyIdAndQuestionId(int $surveyId, int $questionId): Collection;
+    public function findBySurveyAndQuestionId(string $survey, int $questionId): Collection;
 
     public function create(array $answerData): ?Answer;
 }

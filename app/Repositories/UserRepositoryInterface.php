@@ -13,6 +13,6 @@ interface UserRepositoryInterface
     /**
      * @return Collection<User>
      */
-    public function list(): Collection;
+    public function list(?array $with = []): Collection;
 
 }

@@ -12,6 +12,10 @@ class Answer extends Model
 {
     protected $fillable = [
         'answer',
+        'answered_at',
+    ];
+    protected $casts = [
+        'answered_at' => 'datetime',
     ];
     public $timestamps = true;
 
@@ -27,6 +31,6 @@ class Answer extends Model
 
     public function survey(): BelongsTo
     {
-        return $this->belongsTo(Survey::class);
+        return $this->belongsTo(Survey::class, 'title', 'survey');
     }
 }

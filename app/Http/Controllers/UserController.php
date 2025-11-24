@@ -10,7 +10,7 @@ readonly class UserController
     use ReadableResource;
     public function __construct(
         private UserRepositoryInterface $repository,
-    ){
+    ) {
 
     }
 }

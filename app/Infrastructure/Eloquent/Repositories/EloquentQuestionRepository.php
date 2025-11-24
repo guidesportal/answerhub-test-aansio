@@ -3,7 +3,6 @@
 namespace App\Infrastructure\Eloquent\Repositories;
 
 use App\Models\Question;
-use App\Models\Survey;
 use App\Repositories\QuestionRepositoryInterface;
 use Illuminate\Support\Collection;
 
@@ -14,9 +13,14 @@ class EloquentQuestionRepository implements QuestionRepositoryInterface
         return Question::find($id);
     }
 
-    public function list(): Collection
+    public function list(?array $with = []): Collection
     {
-        return collect(Question::all());
+        return collect(Question::with($with)->get());
     }
 
+    public function firstBySurveyAndQuestionId(string $survey, int $questionId): ?Question
+    {
+        $question = $this->find($questionId);
+        return ($question->survey === $survey) ? $question : null;
+    }
 }

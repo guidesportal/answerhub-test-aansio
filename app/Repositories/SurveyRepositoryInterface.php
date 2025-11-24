@@ -7,11 +7,11 @@ use Illuminate\Support\Collection;
 
 interface SurveyRepositoryInterface
 {
-    public function find(int $id): ?Survey;
+    public function find(string $title): ?Survey;
 
     /**
      * @return Collection<Survey>
      */
-    public function list(): Collection;
+    public function list(?array $with = []): Collection;
 
 }
