@@ -1,0 +1,231 @@
+{
+  "info": {
+    "name": "answerhub-test-aansio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "system-a",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"jperez@shub.com\",\n  \"survey\": \"satisfaction\",\n  \"qid\": 1,\n  \"score\": \"5\",\n  \"submitted_at\": \"2025-01-20T10:30:00Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/external/survey-responses/system-a",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "external", "survey-responses", "system-a"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "system-b",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"participant\": {\n    \"email\": \"jperez@shub.com\"\n  },\n  \"survey_code\": \"satisfaction\",\n  \"external_qid\": 1,\n  \"rating\": {\n    \"value\": \"5\"\n  },\n  \"created_at\": 1737360000\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/external/survey-responses/system-b",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "external", "survey-responses", "system-b"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "system-c",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email_recipient\": \"jperez\",\n  \"email_host\": \"shub.com\",\n  \"survey\": {\n    \"surveyId\": \"satisfaction\",\n    \"questionId\": 1\n  },\n  \"answer\": \"5\",\n  \"submitted\": \"20/01/2025 10:30\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/external/survey-responses/system-c",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "external", "survey-responses", "system-c"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "system-d",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/xml",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<surveyResponse>\n    <id>abc-123</id>\n    <survey>satisfaction</survey>\n    <question>1</question>\n    <participant>jperez@shub.com</participant>\n    <score>2</score>\n    <date>2025-08-17 12:04:00</date>\n</surveyResponse>",
+          "options": {
+            "raw": {
+              "language": "xml"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/external/survey-responses/system-d",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "external", "survey-responses", "system-d"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "system-e",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/csv",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "1,satisfaction,\"jperez@shub.com\",1,\"2025/08/17 12:05\"\n1,satisfaction,\"jperez@shub.com\",1,\"2025/08/17 12:06\"",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/external/survey-responses/system-e",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "external", "survey-responses", "system-e"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "system-f",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/csv",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "1,satisfaction,\"jperez@shub.com\",1,\"2025/08/17 12:05\"\n1,satisfaction,\"jperez@shub.com\",1,\"2025/08/17 12:06\"",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/external/survey-responses/system-f?email=jperez@shub.com&survey=satisfaction&question_id=1&answer=4&answered_at=2025-08-17T12:07:00Z",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "external", "survey-responses", "system-f"],
+          "query": [
+            {
+              "key": "email",
+              "value": "jperez@shub.com"
+            },
+            {
+              "key": "survey",
+              "value": "satisfaction"
+            },
+            {
+              "key": "question_id",
+              "value": "1"
+            },
+            {
+              "key": "answer",
+              "value": "4"
+            },
+            {
+              "key": "answered_at",
+              "value": "2025-08-17T12:07:00Z"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

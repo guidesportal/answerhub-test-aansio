@@ -18,21 +18,21 @@ class EloquentAnswerRepository implements AnswerRepositoryInterface
         return collect(Answer::with($with)->get());
     }
 
-    public function findBySurveyAndQuestionId(string $survey, int $questionId): Collection
+    public function findBySurveyAndQuestionId(string $surveyId, int $questionId): Collection
     {
         $eloquentCollection = Answer::query()
-            ->where('survey', $survey)
+            ->where('survey', $surveyId)
             ->where('question_id', $questionId)
             ->get();
 
         return collect($eloquentCollection);
     }
 
-    public function firstBySurveyAndQuestionId(string $survey, int $questionId): ?Answer
+    public function firstBySurveyAndQuestionId(string $surveyId, int $questionId): ?Answer
     {
         return Answer::query()
             ->where('question_id', '=', $questionId)
-            ->where('survey', '=', $survey)
+            ->where('survey', '=', $surveyId)
             ->first();
     }
 

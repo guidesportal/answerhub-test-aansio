@@ -14,12 +14,13 @@ class Question extends Model
     protected $fillable = [
         'question_text',
         'type',
+        'survey',
     ];
     public $timestamps = true;
 
     public function survey(): BelongsTo
     {
-        return $this->belongsTo(Survey::class, 'title', 'survey');
+        return $this->belongsTo(Survey::class, 'survey');
     }
 
     public function answers(): HasMany

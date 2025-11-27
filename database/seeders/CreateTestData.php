@@ -14,22 +14,33 @@ class CreateTestData extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'Juan Pérez',
-            'email' => 'jperez@shub.com',
-        ]);
-        Survey::create([
-            'title' => 'old_satisfaction',
-            'description' => 'Test Survey inactive',
-            'is_active' => false,
-        ]);
-        $survey = Survey::create([
-            'title' => 'satisfaction',
-            'description' => 'Test Survey active',
-            'is_active' => true,
-        ]);
-        $question = new Question(["question_text" => "Your satisfaction between 0-5?", "type" => "text"]);
-        $survey->questions()->save($question);
-
+        User::firstOrCreate(
+            ['email' => 'jperez@shub.com'],
+            ['name' => 'Juan Pérez']
+        );
+        
+        Survey::firstOrCreate(
+            ['title' => 'old_satisfaction'],
+            [
+                'description' => 'Test Survey inactive',
+                'is_active' => false,
+            ]
+        );
+        
+        $survey = Survey::firstOrCreate(
+            ['title' => 'satisfaction'],
+            [
+                'description' => 'Test Survey active',
+                'is_active' => true,
+            ]
+        );
+        
+        Question::firstOrCreate(
+            [
+                'survey' => $survey->title,
+                'question_text' => "Your satisfaction between 0-5?",
+            ],
+            ['type' => 'text']
+        );
     }
 }
