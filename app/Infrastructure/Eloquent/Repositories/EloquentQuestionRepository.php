@@ -18,9 +18,9 @@ class EloquentQuestionRepository implements QuestionRepositoryInterface
         return collect(Question::with($with)->get());
     }
 
-    public function firstBySurveyAndQuestionId(int $surveyId, int $questionId): ?Question
+    public function firstBySurveyAndQuestionId(string $surveyId, int $questionId): ?Question
     {
-        return Question::where('survey_id', $surveyId)
+        return Question::where('survey', $surveyId)
             ->where('id', $questionId)
             ->first();
     }

@@ -37,7 +37,7 @@ class CreateTestData extends Seeder
         
         Question::firstOrCreate(
             [
-                'survey_id' => $survey->id,
+                'survey' => $survey->title,
                 'question_text' => "Your satisfaction between 0-5?",
             ],
             ['type' => 'text']

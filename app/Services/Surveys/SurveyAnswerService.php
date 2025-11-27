@@ -58,7 +58,7 @@ class SurveyAnswerService implements SurveyAnswerServiceInterface
             }
 
             foreach ($answers as $answerData) {
-                $question = $this->questionRepo->firstBySurveyAndQuestionId($survey->id, $answerData['question_id']);
+                $question = $this->questionRepo->firstBySurveyAndQuestionId($survey->title, $answerData['question_id']);
 
                 if (!$question) {
                     Log::warning("Question {$answerData['question_id']} not found in survey {$surveyId}");
@@ -67,7 +67,7 @@ class SurveyAnswerService implements SurveyAnswerServiceInterface
 
                 $this->answerRepo->create([
                     'user_id' => $user->id,
-                    'survey_id' => $survey->id,
+                    'survey' => $survey->title,
                     'question_id' => $question->id,
                     'answer' => $answerData['answer'],
                     'answered_at' => $answerData['answered_at'] ?? now(),

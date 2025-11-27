@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Answer extends Model
 {
     protected $fillable = [
-        'survey_id',
+        'survey',
         'question_id',
         'user_id',
         'answer',
@@ -34,6 +34,6 @@ class Answer extends Model
 
     public function survey(): BelongsTo
     {
-        return $this->belongsTo(Survey::class);
+        return $this->belongsTo(Survey::class, 'survey');
     }
 }

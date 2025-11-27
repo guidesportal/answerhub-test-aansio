@@ -6,11 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @method static find(int $id)
+ * @method static find(string $title)
  * @method static create(array $array)
  */
 class Survey extends Model
 {
+    protected $primaryKey = 'title';
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     protected $fillable = [
         'title',
         'description',
@@ -23,6 +27,6 @@ class Survey extends Model
 
     public function questions(): HasMany
     {
-        return $this->hasMany(Question::class);
+        return $this->hasMany(Question::class, 'survey');
     }
 }
